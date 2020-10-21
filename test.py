@@ -31,12 +31,12 @@ def ml_loop():
         else:
             ballisfall=False
         bx=scene_info.ball[0]
-        by=scene_info.ball[1]
+        by=scene_info.ball[1]#取得球的XY座標
         if bx <= 7:
             print(scene_info.ball)
                 
         if bx >= 193:
-            print(scene_info.ball)
+            print(scene_info.ball)#球碰到牆壁並反彈
         if ballisfall:
                       
             if 350 > by > 210:        
@@ -46,13 +46,15 @@ def ml_loop():
                if bx >= 193:
                 print(scene_info.ball)
                 fbx = 200-(407-by)
-                                  
+                 #^
+                 #| 球只會反彈一次 計算其落點 
             if 210>by >120 :
               if bx<=7:
                  fbx = 180
               if bx>=193:
-                 fbx = 20      
-             
+                 fbx = 20   
+                 #^
+                 #| 球會反彈兩次 且其落點會靠近邊邊            
             if pfm < fbx:
                comm.send_instruction(scene_info.frame, PlatformAction.MOVE_RIGHT)
             if pfm > fbx:
